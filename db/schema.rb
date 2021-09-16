@@ -10,41 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_083731) do
-
-  create_table "categories", force: :cascade do |t|
-    t.string "category"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "journals", force: :cascade do |t|
-    t.string "category"
-    t.string "tag"
-    t.text "abstract"
-    t.string "full_text"
-    t.string "publisher"
-    t.string "verified_by"
-    t.datetime "verified_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "tag"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_tags_on_category_id"
-  end
+ActiveRecord::Schema.define(version: 2021_09_15_140337) do
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name"
     t.string "username", null: false
+    t.string "password_digest"
     t.string "email", null: false
     t.string "phone", null: false
-    t.string "password"
     t.string "role", null: false
     t.datetime "last_login"
     t.datetime "created_at", precision: 6, null: false
