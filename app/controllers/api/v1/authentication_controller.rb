@@ -9,13 +9,13 @@ class Api::V1::AuthenticationController < ApplicationController
     raise AuthenticationError unless user.authenticate(params.require(:password))
     token = AuthenticationTokenService.call(user.id)
 
-    render json: { token: token }, status: :created
+    render json: { status: true, token: token }, status: :created
   end
 
   private
 
   def parameter_missing(e)
-    render json: { error: e.message }, status: :unprocessable_entity
+    render json: { status: falas, message: e.message }, status: :unprocessable_entity
   end
 
   def handle_anauthenticated
