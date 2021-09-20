@@ -1,7 +1,8 @@
 class Api::V1::UserController < ApplicationController
     include ActionController::HttpAuthentication::Token
 
-    before_action :authenticate_user
+#     before_action :authenticate_user
+    skip_before_action :authenticate_user, only: [:create]
     before_action :set_user, only: [ :show, :update, :destroy ]
     rescue_from ActiveRecord::RecordNotFound, with: :notFound
     
